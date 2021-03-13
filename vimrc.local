@@ -1,0 +1,19 @@
+" Color scheme
+let g:onedark_termcolors=16
+colorscheme onedark
+
+set tags^=./.git/tags;
+
+" make test commands execute using dispatch.vim
+let test#strategy = "dispatch"
+
+let g:ale_linters = {
+\   'sass': ['scss-lint'],
+\   'ruby': ['standard'],
+\   'javascript': ['prettier'],
+\}
+
+let g:ale_fixers = {
+\   'ruby': ['standard'],
+\   'javascript': ['prettier'],
+\}
