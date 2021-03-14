@@ -1,5 +1,7 @@
 [commit]
   verbose = true
+[pull]
+  ff = only
 [user]
-	name = John Bannister
-	email = johnb@hey.com
+  name = John Bannister
+  email = johnb@hey.com
