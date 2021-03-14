@@ -1,0 +1,47 @@
+if [ -d /Library/Mail/Bundles/GPGMailLoader_5.mailbundle ]; then
+  fancy_echo "Removing GPG Suite Mail plugin"
+  sudo rm -rf /Library/Mail/Bundles/GPGMailLoader_5.mailbundle
+fi
+
+add_or_update_asdf_plugin "golang" "https://github.com/kennyp/asdf-golang"
+
+fancy_echo "Installing latest Go ..."
+install_asdf_language "golang"
+
+brew bundle --file=- <<EOF
+brew "mas"
+brew "fzf"
+
+cask "1password"
+cask "choosy"
+cask "dash"
+cask "iterm2"
+cask "raycast"
+cask "spotify"
+cask "tweetbot"
+
+mas "Craft", id: 1487937127
+mas "Fantastical", id: 975937182
+mas "Reeder", id: 1529448980
+mas "Things", id: 904280696
+EOF
+
+$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc --no-bash --no-fish
+
+git_clone_or_pull() {
+  local REPOSRC=$1
+  local LOCALREPO=$2
+  local LOCALREPO_VC_DIR=$LOCALREPO/.git
+  if [[ ! -d "$LOCALREPO_VC_DIR" ]]; then
+    git clone --recursive $REPOSRC $LOCALREPO
+  else
+    pushd $LOCALREPO
+    git pull $REPOSRC && git submodule update --init --recursive
+    popd
+  fi
+}
+
+git_clone_or_pull "https://github.com/thoughtbot/dotfiles.git" "~/dotfiles/"
+git_clone_or_pull "https://github.com/jdbann/dotfiles-local.git" "~/dotfiles-local/"
+
+rcup
