@@ -41,7 +41,7 @@ git_clone_or_pull() {
   fi
 }
 
-git_clone_or_pull "https://github.com/thoughtbot/dotfiles.git" "~/dotfiles/"
-git_clone_or_pull "https://github.com/jdbann/dotfiles-local.git" "~/dotfiles-local/"
+git_clone_or_pull "https://github.com/thoughtbot/dotfiles.git" ~/dotfiles
+git_clone_or_pull "https://github.com/jdbann/dotfiles-local.git" ~/dotfiles-local
 
 rcup
