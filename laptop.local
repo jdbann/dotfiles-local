@@ -11,6 +11,7 @@ install_asdf_language "golang"
 brew bundle --file=- <<EOF
 brew "mas"
 brew "fzf"
+brew "starship"
 
 cask "1password"
 cask "choosy"
