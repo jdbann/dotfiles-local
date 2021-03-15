@@ -24,6 +24,7 @@ cask "tweetbot"
 
 mas "Craft", id: 1487937127
 mas "Fantastical", id: 975937182
+mas "Hush", id: 1544743900
 mas "Reeder", id: 1529448980
 mas "Things", id: 904280696
 EOF
